@@ -1,0 +1,71 @@
+{
+  "filter": {
+    "file": "admob.csv",
+    "filter": [
+      {
+        "file": "admob_filter.csv",
+        "key": [
+          "data",
+          "af_revenue",
+          "adapter",
+          "country",
+          "af_id"
+        ],
+        "equal": {
+          "adapter": "AdMobAdapter"
+        },
+        "equal_list": {
+          "country": [
+            "US",
+            "PH"
+          ]
+        },
+        "greater": {
+          "af_revenue": 0.01
+        },
+        "less": {
+          "af_revenue": 0.05
+        }
+      }
+    ]
+  },
+  "statistical": {
+    "file": "admob_test.txt",
+    "task": [
+      {
+        "file": "admob.csv",
+        "name": "AdMobAdapter统计",
+        "filter": {
+          "equal": {
+            "adapter": "AdMobAdapter",
+            "data": "2021-08-22"
+          },
+          "equal_list": {
+            "country": [
+              "US",
+              "PH"
+            ]
+          },
+          "greater": {
+            "af_revenue": 0.01
+          },
+          "less": {
+            "af_revenue": 0.05
+          }
+        },
+        "target": [
+          {
+            "key": "af_revenue",
+            "fun": [
+              "max",
+              "min",
+              "mean",
+              "sum",
+              "len"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
