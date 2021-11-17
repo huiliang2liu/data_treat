@@ -44,7 +44,7 @@
 | 字断 | 类型 | 说明 | 是否必须 |
 | :--: | :--: | :--: | :--: |
 | file | string | 输出文件 | 是 |
-| task | [task](#task)对象数组 | 过滤条件 | 是 |
+| task | [task](#task)对象数组 | 统计任务 | 是 |
 
 
 <h3 id="task">task</h3>
@@ -55,7 +55,7 @@
 | file | string | 原数据文件 | 是 |
 | name | string | 任务名称 | 是 |
 | filter | [condition](#condition)对象 | 过滤条件 | 否 |
-| target | [target](#target)对象数组 | 过滤条件 | 是 |
+| target | [target](#target)对象数组 | 统计指标 | 是 |
 
 
 <h3 id="condition">condition对象</h3>
