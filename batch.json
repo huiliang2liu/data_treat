@@ -1,4 +1,9 @@
 {
+  "head": {
+    "head": [],
+    "file": "",
+    "save": ""
+  },
   "filter": {
     "file": "admob.csv",
     "filter": [

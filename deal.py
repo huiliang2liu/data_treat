@@ -209,17 +209,6 @@ def filter_(filter_params):
     命令:python3 deal.py batch.json
     """
     file_ = filter_params['file']
-    save_file = None
-    if 'save_file' in filter_params:
-        save_file = filter_params['save_file']
-    heads = None
-    if 'heads' in filter_params:
-        heads = filter_params['heads']
-    if heads and len(heads) > 0:
-        print("正在添加头部")
-        add_head(heads, file_, save_file)
-        print("头部添加完成")
-        file_ = save_file
     filter_list = filter_params['filter']
     pd_f = pd.read_csv(file_)
     for item in filter_list:
@@ -281,6 +270,11 @@ if __name__ == '__main__':
         file = sys.argv[1]
     with open(file, 'r') as f:
         fil = json.load(f)
+    if 'head' in fil:
+        head = fil['head']
+        print("正在添加头部")
+        add_head(head['heads'], head['file'], head['save'])
+        print("头部添加完成")
     if 'filter' in fil:
         filter_(fil['filter'])
     if 'statistical' in fil:
