@@ -71,7 +71,7 @@ def filter_equal_list(input_pd, filter_params):
     for key in equal_list.keys():
         value = equal_list[key]
         for va in value:
-            pd_f_ = pd_f[pd_f[key] == va]
+            pd_f_ = pd_f[pd_f[key] == str(va)]
             if values is not None:
                 values = np.vstack((values, pd_f_.values))
             else:
@@ -172,6 +172,30 @@ def filter_less_equal(input_pd, filter_params):
     return pd_f
 
 
+def filter_quantile(input_pd, filter_params):
+    """
+       奇异值过滤
+       :param input_pd: 原数据
+       :param filter_params: 过滤条件
+       :return: 过滤后的数据
+       """
+    if 'quantile' not in filter_params:
+        return input_pd
+    quantile_list = filter_params['quantile']
+    pd_f = input_pd
+    for quantile in quantile_list:
+        key = quantile['key']
+        low = quantile['low']
+        high = quantile['high']
+        interval = quantile['interval']
+        low = pd_f[key].quantile(q=low)
+        high = pd_f[key].quantile(q=high)
+        interval = interval * (high - low)
+        pd_f = pd_f[pd_f[key] < high + interval]
+        pd_f = pd_f[pd_f[key] > low - interval]
+    return pd_f
+
+
 def filter_fun(input_pd, filter_params):
     pd_f = input_pd
     pd_f = filter_equal(pd_f, filter_params)
@@ -182,6 +206,7 @@ def filter_fun(input_pd, filter_params):
     pd_f = filter_greater_equal(pd_f, filter_params)
     pd_f = filter_less(pd_f, filter_params)
     pd_f = filter_less_equal(pd_f, filter_params)
+    pd_f = filter_quantile(pd_f, filter_params)
     return pd_f
 
 

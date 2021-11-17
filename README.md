@@ -47,7 +47,7 @@
 | task | [task](#task)对象数组 | 统计任务 | 是 |
 
 
-<h3 id="task">task</h3>
+<h3 id="task">task对象</h3>
 
 
 | 字断 | 类型 | 说明 | 是否必须 |
@@ -73,15 +73,27 @@
 | greater_equal | map | 大于等于过滤条件，key是过滤字断，value是过滤的值的集合 | 否 |
 | less | map | 小于过滤条件，key是过滤字断，value是过滤的值的集合 | 否 |
 | less_equal | map | 小于等于过滤条件，key是过滤字断，value是过滤的值的集合 | 否 |
+| quantile | [quantile](#quantile)对象数组 | 奇异值剔除 | 否 |
 
 
-<h3 id="target">target</h3>
+<h3 id="target">target对象</h3>
 
 
 | 字断 | 类型 | 说明 | 是否必须 |
 | :--: | :--: | :--: | :--: |
 | key | string | 统计的字断 | 是 |
 | fun | string数组 | 执行函数的数组（max：最大值, min：最小值, mean：均值, sum：合计, len：数量） | 是 |
+
+
+<h3 id="quantile">quantile对象</h3>
+
+
+| 字断 | 类型 | 说明 | 是否必须 |
+| :--: | :--: | :--: | :--: |
+| key | string | 统计的字断 | 是 |
+| low | float | 下边界(0-1) | 是 |
+| high | float | 上边界(0-1) | 是 |
+| interval | float | 缩放因子 | 是 |
 
 
 
