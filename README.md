@@ -82,3 +82,86 @@
 | :--: | :--: | :--: | :--: |
 | key | string | 统计的字断 | 是 |
 | fun | string数组 | 执行函数的数组（max：最大值, min：最小值, mean：均值, sum：合计, len：数量） | 是 |
+
+
+
+## 例子
+
+···
+{
+  "head": {
+    "heads": [],
+    "file": "",
+    "save": ""
+  },
+  "filter": {
+    "file": "admob.csv",
+    "filter": [
+      {
+        "file": "admob_filter.csv",
+        "key": [
+          "data",
+          "af_revenue",
+          "adapter",
+          "country",
+          "af_id"
+        ],
+        "equal": {
+          "adapter": "AdMobAdapter"
+        },
+        "equal_list": {
+          "country": [
+            "US",
+            "PH"
+          ]
+        },
+        "greater": {
+          "af_revenue": 0.01
+        },
+        "less": {
+          "af_revenue": 0.05
+        }
+      }
+    ]
+  },
+  "statistical": {
+    "file": "admob_test.txt",
+    "task": [
+      {
+        "file": "admob.csv",
+        "name": "AdMobAdapter统计",
+        "filter": {
+          "equal": {
+            "adapter": "AdMobAdapter",
+            "data": "2021-08-22"
+          },
+          "equal_list": {
+            "country": [
+              "US",
+              "PH"
+            ]
+          },
+          "greater": {
+            "af_revenue": 0.01
+          },
+          "less": {
+            "af_revenue": 0.05
+          }
+        },
+        "target": [
+          {
+            "key": "af_revenue",
+            "fun": [
+              "max",
+              "min",
+              "mean",
+              "sum",
+              "len"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+···
