@@ -1,8 +1,8 @@
 # 数据简单处理
 
 ## 使用说明
-   需要安装python3和pandas
-   python3 deal.py 批处理文件为脚本目录下batch.json
+   需要安装python3和pandas  
+   python3 deal.py 批处理文件为脚本目录下batch.json  
    python3 deal.py ./batch.json 批处理文件为./batch.json
 
 ## 批处理文件说明
