@@ -89,11 +89,6 @@
 
 ```
 {
-  "head": {
-    "heads": [],
-    "file": "",
-    "save": ""
-  },
   "filter": {
     "file": "admob.csv",
     "filter": [
